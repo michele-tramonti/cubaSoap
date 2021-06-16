@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://workOrderDataBrowse.caption"
+        focusComponent="workOrderDatasTable"
+        messagesPack="com.rdlabsrl.lfm.web.screens.workorderdata">
+    <data readOnly="true">
+        <collection id="workOrderDatasDc"
+                    class="com.rdlabsrl.lfm.entity.WorkOrderData">
+            <view extends="_local"/>
+            <loader id="workOrderDatasDl">
+                <query>
+                    <![CDATA[select e from lfm_WorkOrderData e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="workOrderDatasTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="workOrderDatasTable"
+                dataLoader="workOrderDatasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="workOrderDatasTable"
+                    width="100%"
+                    dataContainer="workOrderDatasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="workOrder"/>
+                <column id="gtin"/>
+                <column id="info"/>
+                <column id="materiale"/>
+                <column id="serType"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="workOrderDatasTable.create"/>
+                <button id="editBtn" action="workOrderDatasTable.edit"/>
+                <button id="removeBtn" action="workOrderDatasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

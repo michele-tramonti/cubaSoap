@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-lfm" insertBefore="administration" caption="mainMsg://menu_config.application-lfm">
+        <item screen="lfm_WorkOrderData.browse" caption="mainMsg://menu_config.lfm_WorkOrderData.browse"/>
+    </menu>
+</menu-config>

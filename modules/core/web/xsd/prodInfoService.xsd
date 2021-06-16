@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="prodInfoService.soap.lfm.rdlabsrl.com"
+        targetNamespace="prodInfoService.soap.lfm.rdlabsrl.com"
+        elementFormDefault="qualified"
+>
+    <xs:element name="productionInfoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="workOrder" nillable="false" minOccurs="1" type="tns:workorder"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="productionInfoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prodInfo" nillable="true" type="tns:prodInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="workorder">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="12" />
+            <xs:maxLength value="12" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="prodInfo">
+        <xs:sequence>
+            <xs:element name="workOrder" type="xs:string"/>
+            <xs:element name="gtin" type="tns:gtin"/>
+            <xs:element name="materiale" type="xs:string"/>
+            <xs:element name="info" type="xs:string"/>
+            <xs:element name="serType" type="tns:serType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="gtin">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="14" />
+            <xs:maxLength value="14" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="serType">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="0"/> <!-- NOT_SERIALIZED -->
+            <xs:enumeration value="1"/> <!-- LOT_MANAGED -->
+            <xs:enumeration value="2"/> <!-- SERIALIZED_NO_TRACK -->
+            <xs:enumeration value="3"/> <!-- SERIALIZED_AND_TRACK -->
+            <xs:enumeration value="4"/> <!-- TEST_ORDER ? -->
+            <!-- ne servono altri? -->
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

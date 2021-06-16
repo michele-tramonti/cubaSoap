@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sws="http://www.springframework.org/schema/web-services"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <sws:annotation-driven/>
+
+    <context:component-scan base-package="com.rdlabsrl.lfm.soap.prodinfoservice"/>
+
+    <sws:dynamic-wsdl id="prodInfoService"
+                      portTypeName="productionInfoPort"
+                      locationUri="http://localhost:8080/app-core/soap"
+                      targetNamespace="prodInfoService.soap.lfm.rdlabsrl.com">
+        <sws:xsd location="xsd/prodInfoService.xsd"/>
+    </sws:dynamic-wsdl>
+
+    <sws:interceptors>
+        <bean id="validatingInterceptor"
+              class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
+            <property name="xsdSchema">
+                <bean class="org.springframework.xml.xsd.SimpleXsdSchema">
+                    <property name="xsd" value="xsd/prodInfoService.xsd"/>
+                </bean>
+            </property>
+            <property name="validateRequest" value="true"/>
+            <property name="validateResponse" value="true"/>
+        </bean>
+    </sws:interceptors>
+
+</beans>
