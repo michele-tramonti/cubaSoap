@@ -24,4 +24,8 @@ Anyway: as I cannot access the application context, I cannot use @Inject and so 
 
 point 2 + point 3 is equal to manually inject DataManager in my context (can be done for every other application context bean).
 
+------------------------------------------------------------------------
 
+I've added also a sort of something similar to a Basic Access authentication (https://en.wikipedia.org/wiki/Basic_access_authentication):
+the soap request must include in http header the field 'Authorization' (in my example   Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==)
+to be a real Basic Access authentication I should return a 401 http error, instead I return a soap custom fault response
