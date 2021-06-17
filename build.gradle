@@ -96,11 +96,6 @@ configure(coreModule) {
         jdbc(hsql)
         testRuntime(hsql)
         compile 'org.springframework.ws:spring-ws-core:2.4.7.RELEASE'
-        compile 'org.springframework.ws:spring-ws-security:2.4.7.RELEASE'
-        compile 'org.springframework.ws:spring-ws-support:2.4.7.RELEASE'
-        compile 'org.springframework.ws:spring-ws-test:2.4.7.RELEASE'
-        compile 'org.springframework.ws:spring-xml:2.4.7.RELEASE'
-        compile 'wsdl4j:wsdl4j:1.6.3'
     }
 
     task cleanConf(description: 'Cleans up conf directory', type: Delete) {
