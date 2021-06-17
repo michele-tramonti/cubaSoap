@@ -18,6 +18,9 @@
     </sws:dynamic-wsdl>
 
     <sws:interceptors>
+        <bean id="customSecurityInterceptor"
+              class="com.rdlabsrl.lfm.soap.interceptor.CustomSecurityInterceptor">
+        </bean>
         <bean id="validatingInterceptor"
               class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
             <property name="xsdSchema">
