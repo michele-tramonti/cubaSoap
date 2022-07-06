@@ -1,8 +1,8 @@
 # cubaSoap
 basic example of creating a spring-ws SOAP server into cuba-platform project
 
-This is an example of a working cuba-platform project (only one entity "workOrder"), capable of exposing a SOAP service (http://localhost:8080/app-core/soap/prodInfoService.wsdl) for retrieve workorder data, given a workorder code.
-It include also a validation of the payload request and response (made by interceptors).
+This is an example of a working cuba-platform project (only one entity "workOrder"), capable of exposing a SOAP service (http://localhost:8080/app-core/soap/prodInfoService.wsdl) for retrieving workorder data, given a workorder code.
+It includes also a validation of the payload request and response (made by interceptors).
 
 
 To integrate spring-ws you have to:
